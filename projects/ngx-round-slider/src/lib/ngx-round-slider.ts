@@ -32,7 +32,7 @@ export class NgxRoundSlider implements AfterViewInit {
   // handlers
   circleHandlersOrder: ('start' | 'end')[] = ['start', 'end'];
   activeHandler: 'start' | 'end' | null = null;
-  inversionToleraceDeg = 5;
+  inversionToleranceDeg = 5;
 
   ngAfterViewInit(): void {
     if (this.start < this.min) {
@@ -116,8 +116,8 @@ export class NgxRoundSlider implements AfterViewInit {
       if (deg > this.end) {
         return;
       }
-      // caso especial: atualmente é 0 e 360 e quer diminuir: NAO DA
-      if (this.start === 0 && this.end === 360 && deg > (360 - this.inversionToleraceDeg)) {
+      // caso especial: atualmente é 0 e 360 e quer diminuir até {{inversionToleraceDeg}}
+      if (this.start === 0 && this.end === 360 && deg > (360 - this.inversionToleranceDeg)) {
         return;
       }
 
@@ -127,8 +127,8 @@ export class NgxRoundSlider implements AfterViewInit {
       if (deg < this.start) {
         return;
       }
-      // caso especial: atualmente é 0 e 360 e quer aumentar ate 10: NAO DA
-      if (this.start === 0 && this.end === 360 && deg < this.inversionToleraceDeg) {
+      // caso especial: atualmente é 0 e 360 e quer aumentar ate {{inversionToleraceDeg}}
+      if (this.start === 0 && this.end === 360 && deg < this.inversionToleranceDeg) {
         return;
       }
 
