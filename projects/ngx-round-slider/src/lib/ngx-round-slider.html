@@ -1,0 +1,67 @@
+<svg
+  [attr.width]="radius * 2 + 20"
+  [attr.height]="radius * 2 + 20"
+  (mousemove)="updateAngle($event)"
+  (mouseup)="activeHandler = null">
+
+  <!-- área preenchida (cone do intervalo selecionado) -->
+  <path
+    [class]="styleClasses?.pathSelectedRangeCone ?? 'path-selected-range-cone'"
+    [attr.d]="getConePath()"
+  />
+
+  <foreignObject [attr.x]="strokePathWidth" [attr.y]="0" [attr.width]="(radius*2) - strokePathWidth"
+                 [attr.height]="radius">
+    <ng-content select="[top]"></ng-content>
+  </foreignObject>
+  <foreignObject [attr.x]="strokePathWidth" [attr.y]="radius" [attr.width]="(radius*2) - strokePathWidth"
+                 [attr.height]="radius">
+    <ng-content select="[bottom]"></ng-content>
+  </foreignObject>
+
+  <g>
+    <!-- arco pontilhado (fora dos limites) -->
+    <path
+      [class]="styleClasses?.pathOutboundDashed ?? 'path-outbound-dashed'"
+      [attr.d]="getExcludedArcPath()"
+      stroke-width="2"
+      stroke-dasharray="6,4"
+    />
+    <!-- arco cinza (limite permitido) -->
+    <path
+      [class]="styleClasses?.pathAllowedRangeBorder ?? 'path-allowed-range-border'"
+      [attr.d]="getLimitArcPath()"
+      [attr.stroke-width]="strokePathWidth"
+    />
+    <path
+      [class]="styleClasses?.pathAllowedRangeCenter ?? 'path-allowed-range-center'"
+      [attr.d]="getLimitArcPath()"
+      [attr.stroke-width]="strokePathWidth - (strokePathWidth/5)"
+    />
+  </g>
+
+  <!-- arco selecionado -->
+  <path
+    [class]="styleClasses?.pathSelectedRange ?? 'path-selected-range'"
+    [attr.d]="getArcPath()"
+    [attr.stroke-width]="strokePathWidth"
+  />
+  <!-- 0(zero) line -->
+  <line
+    [class]="styleClasses?.pathZeroLine ?? 'path-zero-line'"
+    [attr.x1]="0" [attr.y1]="radius+10" [attr.x2]="strokePathWidth+4" [attr.y2]="radius+10"
+    stroke-width="1" stroke-linecap="round" />
+
+  <!-- handles -->
+  @for (handle of circleHandlersOrder; track handle) {
+    @if (!disabled) {
+      <circle
+        [class]="styleClasses?.handler ?? 'handler'"
+        [attr.r]="strokePathWidth/2"
+        [attr.cx]="getHandleX(handle === 'start' ? start : end) + radius + 10"
+        [attr.cy]="getHandleY(handle === 'start' ? start : end) + radius + 10"
+        (mousedown)="setActive(handle)"
+      />
+    }
+  }
+</svg>

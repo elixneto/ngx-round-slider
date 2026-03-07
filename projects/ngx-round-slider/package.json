@@ -1,0 +1,20 @@
+{
+  "name": "ngx-round-slider",
+  "version": "21.0.0",
+  "main": "bundles/ngx-round-slider.umd.js",
+  "module": "fesm2022/ngx-round-slider.mjs",
+  "exports": {
+    ".": {
+      "import": "./fesm2022/ngx-round-slider.mjs",
+      "require": "./bundles/ngx-round-slider.umd.js"
+    }
+  },
+  "peerDependencies": {
+    "@angular/common": "^20.0.0 || ^21.0.0",
+    "@angular/core": "^20.0.0 || ^21.0.0"
+  },
+  "dependencies": {
+    "tslib": "^2.3.0"
+  },
+  "sideEffects": false
+}
