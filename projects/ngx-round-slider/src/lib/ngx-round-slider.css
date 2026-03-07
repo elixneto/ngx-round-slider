@@ -1,0 +1,45 @@
+:host {
+  --ngx-round-slider-path-selected-range: #0060e4;
+  --ngx-round-slider-path-selected-range-cone: rgba(0, 96, 228, 0.5);
+  --ngx-round-slider-path-outbound-dashed:  #818080;
+  --ngx-round-slider-path-allowed-range-border: #5a5a5a;
+  --ngx-round-slider-path-allowed-range-center: #858585;
+  --ngx-round-slider-path-zero-line: #5a5a5a;
+  --ngx-round-slider-handler-fill: #3a3a3a;
+  --ngx-round-slider-handler-stroke: #3a3a3a;
+}
+
+.path-selected-range {
+  fill: transparent;
+  stroke: var(--ngx-round-slider-path-selected-range);
+}
+
+.path-selected-range-cone {
+  fill: var(--ngx-round-slider-path-selected-range-cone);
+}
+
+.path-outbound-dashed {
+  fill: transparent;
+  stroke: var(--ngx-round-slider-path-outbound-dashed);
+}
+
+.path-allowed-range-border {
+  fill: transparent;
+  stroke: var(--ngx-round-slider-path-allowed-range-border);
+}
+
+.path-allowed-range-center {
+  fill: transparent;
+  stroke: var(--ngx-round-slider-path-allowed-range-center);
+}
+
+.path-zero-line {
+  fill: transparent;
+  stroke: var(--ngx-round-slider-path-zero-line);
+}
+
+.handler {
+  cursor: move;
+  fill: var(--ngx-round-slider-handler-fill);
+  stroke: var(--ngx-round-slider-handler-stroke);
+}

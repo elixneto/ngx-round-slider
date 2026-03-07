@@ -1,0 +1,53 @@
+<div class="flex flex-col items-center gap-4">
+  <div class="flex gap-2">
+    <button
+      class="bg-blue-500 dark:bg-blue-800 text-white font-bold py-2 px-4 rounded"
+      (click)="onToggleTheme()">
+      Toggle Theme
+    </button>
+    <button
+      class="bg-red-400 dark:bg-red-800 text-white font-bold py-2 px-4 rounded"
+      (click)="isDisabled.set(!isDisabled())">
+      Toggle Disable
+    </button>
+  </div>
+
+  <div class="flex gap-4 items-center">
+
+    <ngx-round-slider [disabled]="isDisabled()" [start]="30" [end]="120"></ngx-round-slider>
+    <ngx-round-slider [disabled]="isDisabled()" [start]="120" [end]="30" [styleClasses]="styles"></ngx-round-slider>
+
+    <div>
+      <ngx-round-slider
+        [disabled]="isDisabled()"
+        [styleClasses]="styles"
+        [radius]="70"
+        [min]="withReference().refStart"
+        [max]="withReference().refEnd"
+        [(start)]="withReference().start"
+        [(end)]="withReference().end"
+        (startChange)="withReferenceChange()"
+        (endChange)="withReferenceChange()"
+      >
+        <div top class="flex gap-2 items-end justify-center h-full">
+          <div>{{ withReference().start }}º</div>
+          <div>-</div>
+          <div>{{ withReference().end }}º</div>
+        </div>
+        <div bottom class="flex items-center justify-center h-full">
+          @if (withReference().start !== withReference().refStart || withReference().end !== withReference().refEnd) {
+            <p-tag severity="danger" value="Danger" />
+          }
+        </div>
+      </ngx-round-slider>
+      <p-slider
+        [(ngModel)]="withReference().start"
+        [min]="withReference().refStart"
+        [max]="withReference().end"
+        [step]="1">
+      </p-slider>
+    </div>
+
+  </div>
+
+</div>
