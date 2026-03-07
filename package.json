@@ -8,7 +8,7 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "build-lib": "ng build ngx-round-slider",
-    "build-lib-watch": "ng build ngx-round-slider --watch --configuration development"
+    "publish-lib": "ng build ngx-round-slider && cd dist/ngx-round-slider && npm publish --access public"
   },
   "private": true,
   "packageManager": "npm@11.11.0",
