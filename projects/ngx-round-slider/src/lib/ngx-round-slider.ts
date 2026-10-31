@@ -5,6 +5,7 @@ import {
   Input,
   Output,
   ViewEncapsulation,
+  ChangeDetectionStrategy,
 } from '@angular/core';
 import { NgxRoundSliderStyles } from './ngx-round-slider-styles';
 
@@ -13,6 +14,7 @@ import { NgxRoundSliderStyles } from './ngx-round-slider-styles';
   standalone: true,
   imports: [],
   templateUrl: './ngx-round-slider.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './ngx-round-slider.css',
 })
 export class NgxRoundSlider implements AfterViewInit {
@@ -117,7 +119,7 @@ export class NgxRoundSlider implements AfterViewInit {
         return;
       }
       // caso especial: atualmente é 0 e 360 e quer diminuir até {{inversionToleraceDeg}}
-      if (this.start === 0 && this.end === 360 && deg > (360 - this.inversionToleranceDeg)) {
+      if (this.start === 0 && this.end === 360 && deg > 360 - this.inversionToleranceDeg) {
         return;
       }
 

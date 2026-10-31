@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, ChangeDetectionStrategy } from '@angular/core';
 import { NgxRoundSlider } from 'ngx-round-slider';
 import { SliderModule } from 'primeng/slider';
 import { FormsModule } from '@angular/forms';
@@ -18,6 +18,7 @@ import { TagModule } from 'primeng/tag';
     NgxRoundSlider,
   ],
   templateUrl: './app.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './app.css',
 })
 export class App {

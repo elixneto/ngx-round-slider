@@ -1,6 +1,6 @@
 {
   "name": "ngx-round-slider",
-  "version": "21.0.2",
+  "version": "22.0.0",
   "main": "./fesm2022/ngx-round-slider.mjs",
   "module": "./fesm2022/ngx-round-slider.mjs",
   "typings": "./types/public-api.d.ts",
@@ -11,8 +11,8 @@
     }
   },
   "peerDependencies": {
-    "@angular/common": "^20.0.0 || ^21.0.0",
-    "@angular/core": "^20.0.0 || ^21.0.0"
+    "@angular/common": "^21.0.0 || ^22.0.0",
+    "@angular/core": "^21.0.0 || ^22.0.0"
   },
   "dependencies": {
     "tslib": "^2.3.0"
